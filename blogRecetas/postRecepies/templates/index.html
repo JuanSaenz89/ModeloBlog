@@ -3,16 +3,16 @@
 {% block content %}
     
 
-<h1>Post</h1>
+<h1>Recetas</h1>
 
 <ul>
-
-    {%% for post in object_list %}
+{% for post in object_list %}
    
-<li><a href="{% 'post_details' post.pk %}">{{ post.title }} - {{ post.author.last_name }}<br>
-    {{ post.body }}</li>
+    <li><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a> - {{ post.author.last_name }} <br/>
+    
+        {{ post.body }}</li>
 
-    {% endfor %}
+{% endfor %}
 </ul>
 
 {% endblock  %}
