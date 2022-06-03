@@ -1,16 +1,14 @@
 {% extends 'father.html' %}
 
 {% block content %}
-    
-
 <h1>Recetas</h1>
 
 <ul>
-{% for post in object_list %}
+{% for post in object_list  %}
    
-    <li><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a> - {{ post.author.last_name }} <br/>
+    <li><a href="{% url 'detalle_receta' post.pk %}"> {{ post.receta }}</a> - {{ post.author.last_name }} <small><a href="{% url 'editar_receta' post.pk %}">Editar<a/></small> <br/>
     
-        {{ post.body }}</li>
+    {{ post.body }}</li>
 
 {% endfor %}
 </ul>
