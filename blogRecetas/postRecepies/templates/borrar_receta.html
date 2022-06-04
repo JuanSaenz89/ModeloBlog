@@ -1,19 +1,18 @@
 {% extends 'father.html' %}
 {% block content %}
-    <h1>Agregar Post</h1>
-<br/><br/>
 
 {% if user.is_authenticated %}
+    <h1>Borrar Receta</h1>
+<br/><br/>
+<h3>¿Está seguro de que desea borrar la receta?</h3>
 <div class="form-control">
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
         <button class="btn btn-dark" type="submit">Confirmar</button>
 </div>
+    </form>
 {% else %}
-
-Estos no son los androides que estas buscando
-
+    <h1>estos no son los androides que estas buscando</h1>
 {% endif %}
-
+{% endblock %}
 {% endblock  %}

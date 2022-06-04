@@ -6,9 +6,16 @@
 <ul>
 {% for post in object_list  %}
    
-    <li><a href="{% url 'detalle_receta' post.pk %}"> {{ post.receta }}</a> - {{ post.author.last_name }} <small><a href="{% url 'editar_receta' post.pk %}">Editar<a/></small> <br/>
-    
-    {{ post.body }}</li>
+    <li><a href="{% url 'detalle_receta' post.pk %}"> {{ post.receta }}</a> - {{ post.author.last_name }} - {{ post.fecha_post }}</li>
+    <small>
+
+        {% if user.is_authenticated %}    
+                <a href="{% url 'editar_receta' post.pk %}">Editar<a/> - 
+                <a href="{% url 'borrar_receta' post.pk %}">Borrar<a/>    
+                </small>
+                <br/>
+        {% endif %}
+    {{ post.body|slice:":255" }}</li>
 
 {% endfor %}
 </ul>

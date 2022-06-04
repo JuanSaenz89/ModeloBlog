@@ -1,12 +1,17 @@
 {% extends 'father.html' %}
 {% block content %}
-    <h1>Agregar Post</h1>
-<br/><br/>
+{% if user.is_authenticated %}
+        <h1>Agregar Post</h1>
+    <br/><br/>
 
-<div class="form-control">
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-dark" type="submit">Agregar</button>
-</div>
+    <div class="form-control">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-dark" type="submit">Agregar</button>
+    </div>
+        </form>
+{% else %}
+    <h1>estos no son los androides que estas buscando</h1>
+{% endif %}|
 {% endblock  %}
