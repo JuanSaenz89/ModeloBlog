@@ -3,10 +3,11 @@
     <h1>Agregar Post</h1>
 <br/><br/>
 
-{% if user.is_authenticated %}
+{% if user.is_authenticated and user.id == post.author.id %}
 <div class="form-control">
     <form method="POST">
         {% csrf_token %}
+        {{ form.media }}
         {{ form.as_p }}
         <button class="btn btn-dark" type="submit">Confirmar</button>
 </div>

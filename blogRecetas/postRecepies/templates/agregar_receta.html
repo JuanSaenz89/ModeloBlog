@@ -7,10 +7,15 @@
     <div class="form-control">
         <form method="POST">
             {% csrf_token %}
+            {{ form.media }}
             {{ form.as_p }}
             <button class="btn btn-dark" type="submit">Agregar</button>
-    </div>
         </form>
+    </div>
+<script>
+    var name = "{{user.id}}";
+    document.getElementById('author').value = name;
+</script>
 {% else %}
     <h1>estos no son los androides que estas buscando</h1>
 {% endif %}|

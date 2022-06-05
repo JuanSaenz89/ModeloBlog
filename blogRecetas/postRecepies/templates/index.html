@@ -8,14 +8,14 @@
    
     <li><a href="{% url 'detalle_receta' post.pk %}"> {{ post.receta }}</a> - {{ post.author.last_name }} - {{ post.fecha_post }}</li>
     <small>
-
-        {% if user.is_authenticated %}    
+        {% if user.is_authenticated and user.id == post.author.id %}    
                 <a href="{% url 'editar_receta' post.pk %}">Editar<a/> - 
                 <a href="{% url 'borrar_receta' post.pk %}">Borrar<a/>    
-                </small>
+                
                 <br/>
         {% endif %}
-    {{ post.body|slice:":255" }}</li>
+    </small>
+    {{ post.body|slice:":255"|safe }}</li>
 
 {% endfor %}
 </ul>
