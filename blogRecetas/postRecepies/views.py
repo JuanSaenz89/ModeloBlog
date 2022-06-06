@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post
 from .forms import PostForm
@@ -24,3 +25,6 @@ class PostDeleteView(DeleteView):
     model =      Post
     template_name = "borrar_receta.html"
     success_url = '/'
+
+def about_me(request):
+    return render(request, 'about_me.html')

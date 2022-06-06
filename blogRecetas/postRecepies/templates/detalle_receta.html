@@ -2,9 +2,12 @@
 {% block title%}{{ post.receta}}{% endblock %}
 {% block content %}
   
-        <h1>{{ post.receta }} </h1>
+        <h1>{{ post.title }} </h1>
         <small>Por: {{ post.author.last_name }} - {{post.fecha_post}}<br>
         <hr>
+        {% if post.header_image  %}
+        <img src="{{post.header_image.url}}" width=250 height=250 class="rounded-circle"></br></br>
+        {% endif %}
         {%if user.is_authenticated%}
               {% if user.id == post.author.id %}
               - <a href="{% url 'editar_receta' post.pk %}">Editar</a>
@@ -13,6 +16,8 @@
         {%endif%}
         </small>         
 
+
+        
         <p>{{ post.body|safe }}</p>
         <br/><br/>
         <a href="{% url 'index' %}" class="btn btn-dark">Atras</a>

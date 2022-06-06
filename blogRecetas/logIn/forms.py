@@ -6,10 +6,11 @@ class RegistroForm(UserCreationForm):
     email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'class': 'form-control'}))
     first_name = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
     last_name = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
-
+    profile_pic = forms.ImageField(required=False, widget=forms.FileInput(attrs={'class': 'form-control'}))
+    bio = forms.CharField(required=False, widget=forms.Textarea(attrs={'class': 'form-control'}))
     class Meta:
         model = User
-        fields = ('username','email','first_name','last_name','password1','password2')
+        fields = ('profile_pic','username','email','first_name','last_name','bio','password1','password2')
     
     def __init__(self, *args, **kwargs) -> None:
         super(RegistroForm, self).__init__(*args, **kwargs)
@@ -18,22 +19,24 @@ class RegistroForm(UserCreationForm):
         self.fields['password1'].widget.attrs.update({'class': 'form-control'})
         self.fields['password2'].widget.attrs.update({'class': 'form-control'})
 
-class ProfileForm(UserChangeForm):
 
+class ProfileForm(UserChangeForm):
+    
     email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'class': 'form-control'}))
     first_name = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
     last_name = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
     username = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    last_login = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
     is_superuser = forms.CharField(required=True, widget=forms.CheckboxInput(attrs={'class': 'form-check'}))
     is_staff = forms.CharField(required=True, widget=forms.CheckboxInput(attrs={'class': 'form-check'}))
     is_active = forms.CharField(required=True, widget=forms.CheckboxInput(attrs={'class': 'form-check'}))
     date_joined = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    profile_pic = forms.ImageField(required=False, widget=forms.FileInput(attrs={'class': 'form-control'}))
+    bio = forms.CharField(required=False, widget=forms.Textarea(attrs={'class': 'form-control'}))
 
 
     class Meta:
         model = User
-        fields = ('username','email','first_name','last_name','email','password','date_joined', 'last_login','is_superuser','is_staff','is_active')
+        fields = ('profile_pic','username','email','first_name','last_name','bio','email','password')
     
 class PasswordsChangeForm(PasswordChangeForm):
     old_password = forms.CharField(required=True, widget=forms.PasswordInput(attrs={'class': 'form-control', 'type': 'password'}))
