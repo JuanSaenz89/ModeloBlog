@@ -17,6 +17,14 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
             {% if user.is_authenticated %}
+            
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'inbox' %}">Inbox</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'send_message' %}">Send Message</a>
+                  </li>
 
                   <li class="nav-item">
                     <a class="nav-link" href="{% url 'agregar_receta' %}">Agregar Receta</a>
@@ -25,11 +33,10 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{% url 'editar_perfil' %}">Editar Perfil</a>
                   </li>
-
+              
                   <li class="nav-item">
                     <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesion</a>
                   </li>
-
             {% else %}
 
                   <li class="nav-item">
@@ -40,12 +47,11 @@
                     <a class="nav-link" href="{% url 'registro' %}">Registrarse</a>
                   </li>
 
-               <li class="nav-item">
-                    <a class="nav-link" href="{% url 'about_me' %}">About Me</a>
-                </li>
-
             {% endif %}
             
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'about_me' %}">About Me</a>
+          </li>
             
            
             

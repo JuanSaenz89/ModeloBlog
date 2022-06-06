@@ -1,0 +1,25 @@
+{% extends 'father.html' %}
+ {% block content %}
+    <div class="container">
+
+
+
+    {% for message in object_list  %}
+        {% if message.reciever.id == user.id%}
+          <div class="card" style="width: 75rem">
+            <div class="card-body">
+              <h5 class="card-title"> {{ message.title }} </h5>
+              <h6 class="card-subtitle mb-2 text-muted">De {{ message.sender.username }}, para {{ message.reciever.username }}</h6>
+              <p class="card-text">{{ message.msg_content|safe }}</p>
+              <a href= "{% url 'message_detail' message.pk %}" class="btn btn-dark"> Abrir </a>
+            </div>
+          </div>  
+    
+        </br>
+        {% endif %}
+    {% endfor %}
+    </div>
+              
+    <a href= "{% url 'index' %}" class="btn btn-dark"> Atras </a>
+
+{% endblock %}

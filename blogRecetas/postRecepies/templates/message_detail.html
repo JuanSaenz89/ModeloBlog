@@ -1,0 +1,12 @@
+{% extends 'father.html' %}
+{% block content %}
+<div class = "container">
+
+<h1>{{ messages.title }} </h1>
+        <p>Por: {{ messages.sender.username }}</p><br>
+        <hr>
+        <p>{{ messages.msg_content|safe }}</p>
+        <br/><br/>
+        <a href="{% url 'inbox' %}" class="btn btn-dark">Atras</a>
+
+{% endblock %}

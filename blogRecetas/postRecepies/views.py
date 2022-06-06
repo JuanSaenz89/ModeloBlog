@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post
-from .forms import PostForm
+from .models import Post, Messages
+from .forms import PostForm, MessageForm
 class HomeView(ListView):
     model = Post
     template_name = 'index.html'
@@ -28,3 +28,20 @@ class PostDeleteView(DeleteView):
 
 def about_me(request):
     return render(request, 'about_me.html')
+
+class MessagesView(ListView):
+    model = Messages
+    template_name = 'inbox.html'
+    ordering = ['-id']
+
+    
+
+class MessageSendView(CreateView):
+    model = Messages
+    form_class = MessageForm
+    template_name = "send_message.html"
+
+class MessageDetailView(DetailView):
+    model = Messages
+    template_name = 'message_detail.html'
+    
