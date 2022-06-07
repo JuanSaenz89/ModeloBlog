@@ -26,10 +26,6 @@ class ProfileForm(UserChangeForm):
     first_name = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
     last_name = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
     username = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    is_superuser = forms.CharField(required=True, widget=forms.CheckboxInput(attrs={'class': 'form-check'}))
-    is_staff = forms.CharField(required=True, widget=forms.CheckboxInput(attrs={'class': 'form-check'}))
-    is_active = forms.CharField(required=True, widget=forms.CheckboxInput(attrs={'class': 'form-check'}))
-    date_joined = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
     profile_pic = forms.ImageField(required=False, widget=forms.FileInput(attrs={'class': 'form-control'}))
     bio = forms.CharField(required=False, widget=forms.Textarea(attrs={'class': 'form-control'}))
 
